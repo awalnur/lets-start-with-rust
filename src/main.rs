@@ -1,5 +1,7 @@
 #![allow(dead_code)]
 
+use std::f32::consts::PI;
+
 #[derive(Debug)]
 struct Car{
     police_number: String,
@@ -19,12 +21,17 @@ struct Point{
     y: f32,
 }
  // a struct can be reuse as fields of another stuct
-struct Rentangle{
+struct Rectangle{
      // a rentangle can be specified by where the top left and botton right
      // corners are in space.
      top_left: Point,
      bottom_right: Point
  }
+
+
+fn extract(a: i32, b:&i32)->i32{
+    return a+b
+}
 
 fn main(){
     let police_number = String::from("C 9999 DE");
@@ -37,9 +44,12 @@ fn main(){
     let another_point: Point = Point{x: 3.2, y: 5.6};
 
     println!("point coordinates: ({}, {})", point.x, point.y);
-    eprintln!("ERROR: tet");
-    let bottom = Point{x: 4.23, ..another_point};
 
+    let bottom = Point{x: 4.23, ..another_point};
+    println!("hasil penambahana: {}",extract(10, &18));
     println!("Another Point {:?}, {:?}", bottom.x, bottom.y);
 
+    let _rectangle = Rectangle{top_left: Point{x: PI, y: PI}, bottom_right: Point{x: PI, y: PI}};
+    println!("{:?}", _rectangle.bottom_right.x);
+    println!("{:?}", 22/7);
 }
